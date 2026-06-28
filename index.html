@@ -20,7 +20,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .header{background:var(--surface);border-bottom:1px solid var(--border);padding:14px 20px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
 .header h1{font-size:16px;font-weight:600;display:flex;align-items:center;gap:8px}
 .header-sub{font-size:12px;color:var(--text3)}
-.tabs{display:flex;gap:0;border-bottom:1px solid var(--border);background:var(--surface);padding:0 16px;overflow-x:auto}
+.tabs{display:flex;border-bottom:1px solid var(--border);background:var(--surface);padding:0 16px;overflow-x:auto}
 .tab{padding:12px 16px;font-size:13px;cursor:pointer;border:none;background:none;color:var(--text2);border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap;font-family:inherit}
 .tab.active{color:var(--text);border-bottom-color:var(--text);font-weight:500}
 .tab:hover:not(.active){color:var(--text)}
@@ -32,7 +32,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .kpi-value{font-size:24px;font-weight:500}
 .kpi-sub{font-size:11px;color:var(--text3);margin-top:2px}
 .green{color:var(--green)}.red{color:var(--red)}.amber{color:var(--amber)}.accent{color:var(--accent)}
-.progress-wrap{margin-bottom:4px}
 .progress-bar{height:6px;background:var(--surface1);border-radius:3px}
 .progress-fill{height:6px;border-radius:3px;background:var(--accent);transition:.4s}
 .progress-label{font-size:11px;color:var(--text3);margin-top:4px;margin-bottom:16px}
@@ -44,12 +43,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .upload-zone p{font-size:14px;color:var(--text2);margin-bottom:4px}
 .upload-zone small{font-size:12px;color:var(--text3)}
 input[type=file]{display:none}
-label.btn{display:inline-block;margin-top:10px;padding:8px 18px;border:1px solid var(--border);border-radius:var(--radius);font-size:13px;cursor:pointer;color:var(--text);background:var(--surface);font-family:inherit}
-label.btn:hover{background:var(--surface1)}
-input[type=text],input[type=number],select,textarea{
+label.btn-file{display:inline-block;margin-top:10px;padding:8px 18px;border:1px solid var(--border);border-radius:var(--radius);font-size:13px;cursor:pointer;color:var(--text);background:var(--surface);font-family:inherit}
+label.btn-file:hover{background:var(--surface1)}
+input[type=text],input[type=number],input[type=password],select,textarea{
   width:100%;padding:8px 10px;border:1px solid var(--border);border-radius:var(--radius);font-size:13px;background:var(--surface);color:var(--text);font-family:inherit;outline:none;
 }
-input:focus,select:focus,textarea:focus{border-color:var(--accent)}
+input:focus,select:focus{border-color:var(--accent)}
 .field-label{font-size:12px;color:var(--text2);display:block;margin-bottom:4px}
 .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
 .grid-4{display:grid;grid-template-columns:2fr 1.5fr 1fr 80px;gap:8px;align-items:end;margin-bottom:8px}
@@ -58,15 +57,14 @@ input:focus,select:focus,textarea:focus{border-color:var(--accent)}
 .btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
 .btn.primary:hover{background:#185fa5;border-color:#185fa5}
 .btn.primary:disabled{opacity:.45;cursor:not-allowed}
-.btn.small{padding:5px 12px;font-size:12px}
-.btn.danger{color:var(--red);border-color:var(--border)}
+.btn.small{padding:4px 8px;font-size:12px}
 .processing{text-align:center;padding:20px;color:var(--text2);font-size:13px}
 .processing i{font-size:28px;color:var(--accent);display:block;margin-bottom:8px}
 .spin{animation:spin .9s linear infinite;display:inline-block}
 @keyframes spin{to{transform:rotate(360deg)}}
 .msg-ok{color:var(--green);font-size:13px;margin-top:8px;display:flex;align-items:center;gap:6px}
-.msg-warn{color:var(--amber);font-size:13px;margin-top:8px}
-.msg-err{color:var(--red);font-size:13px;margin-top:8px}
+.msg-warn{color:var(--amber);font-size:13px;margin-top:8px;display:flex;align-items:center;gap:6px}
+.msg-err{color:var(--red);font-size:13px;margin-top:8px;display:flex;align-items:center;gap:6px}
 .week-nav{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
 .week-btn{font-size:12px;padding:5px 12px;border:1px solid var(--border);background:var(--surface);border-radius:6px;cursor:pointer;color:var(--text2);font-family:inherit}
 .week-btn.active{background:var(--text);color:var(--bg);border-color:var(--text)}
@@ -93,7 +91,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--accent)}
 .empty{text-align:center;padding:40px 20px;color:var(--text3);font-size:14px}
 .empty i{font-size:40px;display:block;margin-bottom:12px}
 .goal-wrap{display:flex;align-items:center;gap:24px;flex-wrap:wrap}
-.goal-detail p{font-size:13px;color:var(--text2);line-height:2;margin:0}
+.goal-detail p{font-size:13px;color:var(--text2);line-height:2.1}
 .goal-detail strong{color:var(--text)}
 .balances{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
 .balance-card{background:var(--surface1);border-radius:10px;padding:14px 16px}
@@ -103,10 +101,19 @@ input:focus,select:focus,textarea:focus{border-color:var(--accent)}
 .legend span{display:flex;align-items:center;gap:5px}
 .legend-sq{width:10px;height:10px;border-radius:2px;flex-shrink:0}
 .chart-wrap{position:relative;width:100%}
-.alert-banner{background:#EAF3DE;border:1px solid #C0DD97;border-radius:8px;padding:10px 14px;font-size:13px;color:#27500A;margin-bottom:14px;display:flex;align-items:center;gap:8px}
-.alert-banner.warn{background:#FAEEDA;border-color:#EF9F27;color:#633806}
-.alert-banner.red{background:#FCEBEB;border-color:#F09595;color:#791F1F}
-.divider{height:1px;background:var(--border);margin:16px 0}
+.alert-banner{border-radius:8px;padding:10px 14px;font-size:13px;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.alert-green{background:#EAF3DE;border:1px solid #C0DD97;color:#27500A}
+.alert-amber{background:#FAEEDA;border:1px solid #EF9F27;color:#633806}
+.alert-red{background:#FCEBEB;border:1px solid #F09595;color:#791F1F}
+.api-banner{background:var(--surface1);border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:14px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.api-banner i{font-size:20px;color:var(--amber);flex-shrink:0}
+.api-banner-text{flex:1;min-width:200px}
+.api-banner-text p{font-size:13px;color:var(--text2);line-height:1.5}
+.api-banner-text a{color:var(--accent)}
+.api-key-wrap{display:flex;gap:8px;margin-top:8px}
+.api-key-wrap input{flex:1}
+.api-key-wrap button{white-space:nowrap}
+.api-saved{font-size:11px;color:var(--green);margin-top:4px;display:flex;align-items:center;gap:4px}
 @media(max-width:600px){
   .grid-2{grid-template-columns:1fr}
   .grid-4{grid-template-columns:1fr 1fr;gap:6px}
@@ -128,23 +135,22 @@ input:focus,select:focus,textarea:focus{border-color:var(--accent)}
   <button class="tab" onclick="showTab('upload')"><i class="ti ti-plus" style="margin-right:4px"></i>Adicionar semana</button>
   <button class="tab" onclick="showTab('gastos')"><i class="ti ti-list" style="margin-right:4px"></i>Gastos</button>
   <button class="tab" onclick="showTab('meta')"><i class="ti ti-target" style="margin-right:4px"></i>Meta</button>
+  <button class="tab" onclick="showTab('config')"><i class="ti ti-settings" style="margin-right:4px"></i>Config</button>
 </div>
 
 <div class="main">
 
   <!-- DASHBOARD -->
   <div id="tab-dashboard" class="section active">
+    <div id="dash-alert"></div>
     <div class="kpi-row">
       <div class="kpi"><div class="kpi-label">Smart Access</div><div class="kpi-value accent" id="kpi-smart">$25,034</div><div class="kpi-sub">conta corrente</div></div>
       <div class="kpi"><div class="kpi-label">Savings</div><div class="kpi-value green" id="kpi-savings">$9,118</div><div class="kpi-sub">reserva</div></div>
-      <div class="kpi"><div class="kpi-label">Total acumulado</div><div class="kpi-value" id="kpi-total">$34,152</div><div class="kpi-sub" id="kpi-total-sub">de $56,050</div></div>
-      <div class="kpi"><div class="kpi-label">Semana atual (Didi)</div><div class="kpi-value" id="kpi-this-week">—</div><div class="kpi-sub">meta: $2,500</div></div>
+      <div class="kpi"><div class="kpi-label">Total acumulado</div><div class="kpi-value" id="kpi-total">$34,152</div><div class="kpi-sub">de $56,050</div></div>
+      <div class="kpi"><div class="kpi-label">Última semana Didi</div><div class="kpi-value" id="kpi-this-week">—</div><div class="kpi-sub">meta: $2,500</div></div>
     </div>
-    <div class="progress-wrap">
-      <div class="progress-bar"><div class="progress-fill" id="goal-bar" style="width:0%"></div></div>
-    </div>
+    <div class="progress-bar"><div class="progress-fill" id="goal-bar" style="width:0%"></div></div>
     <div class="progress-label" id="goal-pct-label">Calculando...</div>
-    <div id="dash-alert"></div>
     <div class="card">
       <div class="card-title">Receitas vs gastos por semana</div>
       <div class="legend" id="leg-dash"></div>
@@ -153,12 +159,13 @@ input:focus,select:focus,textarea:focus{border-color:var(--accent)}
     <div class="card">
       <div class="card-title">Gastos por categoria — última semana</div>
       <div class="legend" id="leg-cat"></div>
-      <div class="chart-wrap" style="height:210px"><canvas id="c-cat" role="img" aria-label="Distribuição de gastos por categoria">Distribuição por categoria.</canvas></div>
+      <div class="chart-wrap" style="height:210px"><canvas id="c-cat" role="img" aria-label="Gastos por categoria">Distribuição por categoria.</canvas></div>
     </div>
   </div>
 
   <!-- UPLOAD -->
   <div id="tab-upload" class="section">
+    <div id="api-notice"></div>
     <div class="card">
       <div class="card-title">Dados da semana</div>
       <div class="grid-2">
@@ -173,16 +180,18 @@ input:focus,select:focus,textarea:focus{border-color:var(--accent)}
 
     <div class="card">
       <div class="card-title">Screenshot do CommBank — extração automática com IA</div>
-      <div class="upload-zone" id="drop-zone" onclick="document.getElementById('file-in').click()">
-        <i class="ti ti-photo-up"></i>
-        <p>Arraste o screenshot aqui ou clique para selecionar</p>
-        <small>PNG ou JPG do app Commonwealth Bank</small>
-        <label class="btn" onclick="event.stopPropagation();document.getElementById('file-in').click()">
-          <i class="ti ti-upload" style="margin-right:4px"></i>Escolher arquivo
-        </label>
+      <div id="upload-area">
+        <div class="upload-zone" id="drop-zone" onclick="document.getElementById('file-in').click()">
+          <i class="ti ti-photo-up"></i>
+          <p>Arrasta o screenshot aqui ou clica para selecionar</p>
+          <small>PNG ou JPG do app Commonwealth Bank</small>
+          <label class="btn-file" onclick="event.stopPropagation();document.getElementById('file-in').click()">
+            <i class="ti ti-upload" style="margin-right:4px"></i>Escolher arquivo
+          </label>
+        </div>
+        <input type="file" id="file-in" accept="image/*" onchange="handleFile(event)">
+        <div id="upload-status"></div>
       </div>
-      <input type="file" id="file-in" accept="image/*" onchange="handleFile(event)">
-      <div id="upload-status"></div>
     </div>
 
     <div class="card">
@@ -244,8 +253,8 @@ input:focus,select:focus,textarea:focus{border-color:var(--accent)}
     </div>
     <div class="card">
       <div class="card-title">Evolução do patrimônio</div>
-      <div class="legend"><span><span class="legend-sq" style="background:#2a78d6"></span>Patrimônio total</span><span><span class="legend-sq" style="background:#1baf7a;opacity:.7"></span>Meta $56,050</span></div>
-      <div class="chart-wrap" style="height:230px"><canvas id="c-meta" role="img" aria-label="Evolução do patrimônio em direção à meta">Patrimônio acumulado.</canvas></div>
+      <div class="legend"><span><span class="legend-sq" style="background:#2a78d6"></span>Patrimônio total</span><span><span class="legend-sq" style="background:#1baf7a;opacity:.6"></span>Meta $56,050</span></div>
+      <div class="chart-wrap" style="height:230px"><canvas id="c-meta" role="img" aria-label="Evolução do patrimônio">Patrimônio acumulado.</canvas></div>
     </div>
     <div class="card">
       <div class="card-title">Atualizar saldos bancários</div>
@@ -255,6 +264,37 @@ input:focus,select:focus,textarea:focus{border-color:var(--accent)}
       </div>
       <button class="btn primary" onclick="updateBalances()"><i class="ti ti-refresh" style="margin-right:4px"></i>Atualizar saldos</button>
       <div id="bal-status"></div>
+    </div>
+  </div>
+
+  <!-- CONFIG -->
+  <div id="tab-config" class="section">
+    <div class="card">
+      <div class="card-title">Chave de API do Claude (Anthropic)</div>
+      <p style="font-size:13px;color:var(--text2);margin-bottom:12px;line-height:1.6">
+        Para a extração automática de screenshots funcionar, precisas de uma chave de API do Claude.<br>
+        1. Vai em <a href="https://console.anthropic.com" target="_blank" style="color:var(--accent)">console.anthropic.com</a><br>
+        2. Cria uma conta (gratuito para começar)<br>
+        3. Vai em "API Keys" → "Create Key"<br>
+        4. Cola a chave aqui — fica guardada só no teu navegador
+      </p>
+      <label class="field-label">Chave de API (começa com sk-ant-...)</label>
+      <div style="display:flex;gap:8px;margin-bottom:8px">
+        <input type="password" id="api-key-input" placeholder="sk-ant-api03-..." style="flex:1">
+        <button class="btn primary" onclick="saveApiKey()">Guardar</button>
+        <button class="btn" onclick="clearApiKey()">Remover</button>
+      </div>
+      <div id="api-key-status"></div>
+      <div style="margin-top:12px;padding:10px 14px;background:var(--surface1);border-radius:8px;font-size:12px;color:var(--text3);line-height:1.6">
+        <i class="ti ti-shield-lock" style="margin-right:4px"></i>
+        A chave é guardada apenas no localStorage do teu navegador. Nunca é enviada para nenhum servidor excepto directamente para a API do Claude.
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">Dados</div>
+      <p style="font-size:13px;color:var(--text2);margin-bottom:12px">Todos os dados ficam guardados no teu navegador (localStorage).</p>
+      <button class="btn" onclick="exportData()" style="margin-right:8px"><i class="ti ti-download" style="margin-right:4px"></i>Exportar dados (JSON)</button>
+      <button class="btn" onclick="if(confirm('Apagar todos os dados?')){localStorage.clear();location.reload()}" style="color:var(--red)"><i class="ti ti-trash" style="margin-right:4px"></i>Apagar tudo</button>
     </div>
   </div>
 
@@ -274,24 +314,52 @@ const CATS={
 const CAT_ORDER=['groceries','transport','eating','utilities','fitness','shopping','uncategorised'];
 const GOAL=56050;
 const GOAL_DATE=new Date('2026-08-14');
-const fmt=(n)=>'$'+Math.abs(n).toLocaleString('en-AU',{minimumFractionDigits:2,maximumFractionDigits:2});
-const fmtK=(n)=>'$'+Math.round(n).toLocaleString('en-AU');
+const fmt=n=>'$'+Math.abs(n).toLocaleString('en-AU',{minimumFractionDigits:2,maximumFractionDigits:2});
+const fmtK=n=>'$'+Math.round(n).toLocaleString('en-AU');
 
 let S={smartAccess:25034.47,savings:9117.79,weeks:[],activeWeek:0,pendingTxs:[]};
 
 function load(){try{const d=localStorage.getItem('didi_v2');if(d)S={...S,...JSON.parse(d)};}catch(e){}}
 function save(){try{localStorage.setItem('didi_v2',JSON.stringify(S));}catch(e){}}
+function getApiKey(){return localStorage.getItem('didi_apikey')||''}
+function saveApiKey(){
+  const k=document.getElementById('api-key-input').value.trim();
+  if(!k.startsWith('sk-ant-')){document.getElementById('api-key-status').innerHTML='<div class="msg-err"><i class="ti ti-x"></i>Chave inválida. Deve começar com sk-ant-</div>';return;}
+  localStorage.setItem('didi_apikey',k);
+  document.getElementById('api-key-status').innerHTML='<div class="msg-ok"><i class="ti ti-check"></i>Chave guardada!</div>';
+  document.getElementById('api-key-input').value='';
+  renderApiNotice();
+}
+function clearApiKey(){localStorage.removeItem('didi_apikey');document.getElementById('api-key-status').innerHTML='<div class="msg-warn"><i class="ti ti-alert-triangle"></i>Chave removida.</div>';renderApiNotice();}
+
 load();
 
 function showTab(t){
   document.querySelectorAll('.tab').forEach((el,i)=>{
-    el.classList.toggle('active',['dashboard','upload','gastos','meta'][i]===t);
+    el.classList.toggle('active',['dashboard','upload','gastos','meta','config'][i]===t);
   });
   document.querySelectorAll('.section').forEach(el=>el.classList.remove('active'));
   document.getElementById('tab-'+t).classList.add('active');
   if(t==='dashboard')renderDash();
   if(t==='gastos')renderGastos();
   if(t==='meta')renderMeta();
+  if(t==='upload')renderApiNotice();
+  if(t==='config'){const k=getApiKey();document.getElementById('api-key-status').innerHTML=k?'<div class="api-saved"><i class="ti ti-check"></i>Chave configurada</div>':'';}
+}
+
+function renderApiNotice(){
+  const el=document.getElementById('api-notice');
+  if(!el)return;
+  const key=getApiKey();
+  if(key){
+    el.innerHTML='<div class="alert-banner alert-green" style="margin-bottom:14px"><i class="ti ti-check"></i>API Key configurada — extração automática activa!</div>';
+  } else {
+    el.innerHTML=`<div class="alert-banner alert-amber" style="margin-bottom:14px">
+      <i class="ti ti-key"></i>
+      <div>Sem API Key configurada — a extração automática de screenshots não vai funcionar. 
+      <a href="#" onclick="showTab('config');return false" style="color:var(--amber);font-weight:500">Configura a API Key aqui</a> ou adiciona os gastos manualmente.</div>
+    </div>`;
+  }
 }
 
 // ── DASHBOARD ──────────────────────────────────────────────
@@ -304,41 +372,33 @@ function renderDash(){
   document.getElementById('kpi-total').textContent=fmtK(total);
   document.getElementById('goal-bar').style.width=pct.toFixed(1)+'%';
   document.getElementById('goal-pct-label').textContent=pct.toFixed(1)+'% da meta de '+fmtK(GOAL);
-
   const lastWeek=S.weeks[S.weeks.length-1];
-  document.getElementById('kpi-this-week').textContent=lastWeek?fmtK(lastWeek.incomeDidi||0):'—';
   const didiInc=lastWeek?(lastWeek.incomeDidi||0):0;
-  const el=document.getElementById('kpi-this-week');
-  el.className='kpi-value '+(didiInc>=2500?'green':didiInc>0?'amber':'');
-
+  const kwEl=document.getElementById('kpi-this-week');
+  kwEl.textContent=lastWeek?fmtK(didiInc):'—';
+  kwEl.className='kpi-value '+(didiInc>=2500?'green':didiInc>0?'amber':'');
   const today=new Date();
   const weeksLeft=Math.max(0,Math.ceil((GOAL_DATE-today)/(7*864e5)));
   const falta=Math.max(0,GOAL-total);
   const perWeek=weeksLeft>0?falta/weeksLeft:falta;
   const alertEl=document.getElementById('dash-alert');
-  if(perWeek>2500){
-    alertEl.innerHTML=`<div class="alert-banner warn"><i class="ti ti-alert-triangle"></i>Para bater a meta, precisas guardar ${fmt(perWeek)}/semana. Sua meta Didi é $2,500 — pode ser necessário reduzir gastos.</div>`;
-  } else if(falta<=0){
-    alertEl.innerHTML=`<div class="alert-banner"><i class="ti ti-trophy"></i>Meta atingida! Parabéns!</div>`;
-  } else {
-    alertEl.innerHTML=`<div class="alert-banner"><i class="ti ti-check"></i>No caminho certo. Precisas de ${fmt(perWeek)}/semana para atingir a meta.</div>`;
-  }
+  if(falta<=0){alertEl.innerHTML='<div class="alert-banner alert-green"><i class="ti ti-trophy"></i>Meta atingida! Parabéns!</div>';}
+  else if(perWeek>2500){alertEl.innerHTML=`<div class="alert-banner alert-amber"><i class="ti ti-alert-triangle"></i>Para bater a meta, precisas guardar ${fmt(perWeek)}/semana. Considera reduzir gastos.</div>`;}
+  else{alertEl.innerHTML=`<div class="alert-banner alert-green"><i class="ti ti-check"></i>No caminho certo! Precisas de ${fmt(perWeek)}/semana para atingir a meta em ${weeksLeft} semanas.</div>`;}
 
-  const weeks=S.weeks.length>0?S.weeks:[
+  const demoWeeks=[
     {name:'Sem 1',incomeDidi:2200,incomeOther:0,txs:[{cat:'groceries',amount:280},{cat:'transport',amount:120},{cat:'eating',amount:90},{cat:'utilities',amount:150}]},
     {name:'Sem 2',incomeDidi:2600,incomeOther:0,txs:[{cat:'groceries',amount:310},{cat:'transport',amount:140},{cat:'eating',amount:75},{cat:'fitness',amount:55}]},
     {name:'Sem 3',incomeDidi:2450,incomeOther:100,txs:[{cat:'groceries',amount:260},{cat:'transport',amount:160},{cat:'shopping',amount:200},{cat:'eating',amount:80}]},
   ];
-
+  const weeks=S.weeks.length>0?S.weeks:demoWeeks;
   const labels=weeks.map(w=>w.name);
   const incomes=weeks.map(w=>(w.incomeDidi||0)+(w.incomeOther||0));
   const spends=weeks.map(w=>(w.txs||[]).reduce((a,t)=>a+t.amount,0));
-
   document.getElementById('leg-dash').innerHTML=
-    `<span><span class="legend-sq" style="background:#1baf7a"></span>Receitas</span>`+
-    `<span><span class="legend-sq" style="background:#e34948"></span>Gastos</span>`+
-    `<span><span class="legend-sq" style="background:#2a78d6;opacity:.4"></span>Meta $2,500</span>`;
-
+    '<span><span class="legend-sq" style="background:#1baf7a"></span>Receitas</span>'+
+    '<span><span class="legend-sq" style="background:#e34948"></span>Gastos</span>'+
+    '<span><span class="legend-sq" style="background:#2a78d6;opacity:.4"></span>Meta $2,500</span>';
   if(cDash){cDash.destroy();cDash=null;}
   cDash=new Chart(document.getElementById('c-dash'),{
     type:'bar',
@@ -346,34 +406,26 @@ function renderDash(){
       {label:'Receitas',data:incomes,backgroundColor:'#1baf7a',borderRadius:4,borderSkipped:false},
       {label:'Gastos',data:spends,backgroundColor:'#e34948',borderRadius:4,borderSkipped:false},
     ]},
-    options:{responsive:true,maintainAspectRatio:false,
-      plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.dataset.label+': '+fmt(c.parsed.y)}}},
-      scales:{
-        y:{ticks:{callback:v=>'$'+Math.round(v)},grid:{color:'rgba(128,128,128,.12)'}},
-        x:{grid:{display:false},ticks:{autoSkip:false,maxRotation:0}}
-      },
-      animation:{duration:400}
-    }
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.dataset.label+': '+fmt(c.parsed.y)}}},scales:{y:{ticks:{callback:v=>'$'+Math.round(v)},grid:{color:'rgba(128,128,128,.12)'}},x:{grid:{display:false},ticks:{autoSkip:false,maxRotation:0}}},animation:{duration:400}}
   });
-
-  const txs=S.weeks.length>0?(S.weeks[S.weeks.length-1].txs||[]):weeks[weeks.length-1].txs;
-  const catTot={};
-  txs.forEach(t=>{catTot[t.cat]=(catTot[t.cat]||0)+t.amount;});
+  const txs=S.weeks.length>0?(S.weeks[S.weeks.length-1].txs||[]):demoWeeks[demoWeeks.length-1].txs;
+  const catTot={};txs.forEach(t=>{catTot[t.cat]=(catTot[t.cat]||0)+t.amount;});
   const entries=Object.entries(catTot).filter(([,v])=>v>0);
-  document.getElementById('leg-cat').innerHTML=entries.map(([k,v])=>
-    `<span><span class="legend-sq" style="background:${CATS[k]?.color||'#888'}"></span>${CATS[k]?.label||k} ${fmt(v)}</span>`
-  ).join('');
+  document.getElementById('leg-cat').innerHTML=entries.map(([k,v])=>`<span><span class="legend-sq" style="background:${CATS[k]?.color||'#888'}"></span>${CATS[k]?.label||k} ${fmt(v)}</span>`).join('');
   if(cCat){cCat.destroy();cCat=null;}
   cCat=new Chart(document.getElementById('c-cat'),{
     type:'doughnut',
-    data:{labels:entries.map(([k])=>CATS[k]?.label||k),datasets:[{data:entries.map(([,v])=>v),backgroundColor:entries.map(([k])=>CATS[k]?.color||'#888'),borderWidth:3,borderColor:'var(--surface)'}]},
+    data:{labels:entries.map(([k])=>CATS[k]?.label||k),datasets:[{data:entries.map(([,v])=>v),backgroundColor:entries.map(([k])=>CATS[k]?.color||'#888'),borderWidth:3,borderColor:'#ffffff'}]},
     options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.label+': '+fmt(c.parsed)}}},cutout:'58%',animation:{duration:400}}
   });
 }
 
 // ── UPLOAD ──────────────────────────────────────────────────
-function enableSave(){document.getElementById('btn-save').disabled=!(S.pendingTxs.length>0||parseFloat(document.getElementById('w-didi').value)||parseFloat(document.getElementById('w-other').value));}
-
+function enableSave(){
+  const hasTx=S.pendingTxs.length>0;
+  const hasInc=parseFloat(document.getElementById('w-didi').value)>0||parseFloat(document.getElementById('w-other').value)>0;
+  document.getElementById('btn-save').disabled=!(hasTx||hasInc);
+}
 ['w-didi','w-other'].forEach(id=>document.getElementById(id).addEventListener('input',enableSave));
 
 function addTx(){
@@ -384,69 +436,62 @@ function addTx(){
   S.pendingTxs.push({desc,cat,amount:amt});
   document.getElementById('tx-desc').value='';
   document.getElementById('tx-amt').value='';
-  renderPending();
-  enableSave();
+  renderPending();enableSave();
 }
-
 function removePending(i){S.pendingTxs.splice(i,1);renderPending();enableSave();}
-
 function renderPending(){
   const el=document.getElementById('pending-list');
   if(!S.pendingTxs.length){el.innerHTML='';return;}
-  el.innerHTML=`<div style="margin-top:12px;border:1px solid var(--border);border-radius:8px;overflow:hidden">
-    <table class="tx-table">
-      <colgroup><col style="width:45%"><col style="width:30%"><col style="width:18%"><col style="width:7%"></colgroup>
-      <thead><tr><th>Descrição</th><th>Categoria</th><th>Valor</th><th></th></tr></thead>
-      <tbody>`+S.pendingTxs.map((t,i)=>
-    `<tr><td title="${t.desc}">${t.desc}</td><td><span class="cat-badge ${CATS[t.cat]?.cls||''}">${CATS[t.cat]?.label||t.cat}</span></td><td class="amount-neg">${fmt(t.amount)}</td><td><button onclick="removePending(${i})" class="btn small danger" style="padding:2px 6px"><i class="ti ti-x" style="font-size:12px"></i></button></td></tr>`
-  ).join('')+`</tbody></table></div>`;
+  el.innerHTML='<div style="margin-top:12px;border:1px solid var(--border);border-radius:8px;overflow:hidden"><table class="tx-table"><colgroup><col style="width:45%"><col style="width:30%"><col style="width:18%"><col style="width:7%"></colgroup><thead><tr><th>Descrição</th><th>Categoria</th><th>Valor</th><th></th></tr></thead><tbody>'+
+    S.pendingTxs.map((t,i)=>`<tr><td title="${t.desc}">${t.desc}</td><td><span class="cat-badge ${CATS[t.cat]?.cls||''}">${CATS[t.cat]?.label||t.cat}</span></td><td class="amount-neg">${fmt(t.amount)}</td><td><button onclick="removePending(${i})" class="btn small" style="color:var(--red);padding:2px 7px"><i class="ti ti-x" style="font-size:12px"></i></button></td></tr>`).join('')+
+    '</tbody></table></div>';
 }
-
 function saveWeek(){
   const name=document.getElementById('w-name').value.trim()||('Semana '+(S.weeks.length+1));
   const period=document.getElementById('w-period').value.trim();
   const didi=parseFloat(document.getElementById('w-didi').value)||0;
   const other=parseFloat(document.getElementById('w-other').value)||0;
-  const totalSpend=S.pendingTxs.reduce((a,t)=>a+t.amount,0);
-  S.weeks.push({name,period,incomeDidi:didi,incomeOther:other,txs:[...S.pendingTxs],totalSpend});
+  S.weeks.push({name,period,incomeDidi:didi,incomeOther:other,txs:[...S.pendingTxs]});
   S.activeWeek=S.weeks.length-1;
-  const net=(didi+other)-totalSpend;
+  const net=(didi+other)-S.pendingTxs.reduce((a,t)=>a+t.amount,0);
   S.smartAccess=Math.max(0,S.smartAccess+net);
   S.pendingTxs=[];
   save();
   clearForm(true);
-  document.getElementById('save-status').innerHTML=`<div class="msg-ok"><i class="ti ti-check"></i>Semana "${name}" salva! Saldo Smart Access atualizado.</div>`;
-  setTimeout(()=>{document.getElementById('save-status').innerHTML='';showTab('gastos');},1600);
+  document.getElementById('save-status').innerHTML='<div class="msg-ok"><i class="ti ti-check"></i>Semana "'+name+'" salva!</div>';
+  setTimeout(()=>{document.getElementById('save-status').innerHTML='';showTab('gastos');},1500);
 }
-
-function clearForm(keepStatus){
-  ['w-name','w-period','w-didi','w-other','tx-desc','tx-amt'].forEach(id=>{document.getElementById(id).value='';});
-  S.pendingTxs=[];
-  renderPending();
+function clearForm(keep){
+  ['w-name','w-period','w-didi','w-other','tx-desc','tx-amt'].forEach(id=>document.getElementById(id).value='');
+  S.pendingTxs=[];renderPending();
   document.getElementById('btn-save').disabled=true;
-  if(!keepStatus)document.getElementById('save-status').innerHTML='';
-  document.getElementById('upload-status').innerHTML='';
+  if(!keep){document.getElementById('save-status').innerHTML='';document.getElementById('upload-status').innerHTML='';}
 }
 
 async function handleFile(e){
   const file=e.target.files[0];if(!file)return;
+  const key=getApiKey();
   const st=document.getElementById('upload-status');
-  st.innerHTML='<div class="processing"><i class="ti ti-loader spin"></i><p>Analisando screenshot com IA...</p></div>';
+  if(!key){
+    st.innerHTML='<div class="msg-err"><i class="ti ti-key"></i>Precisas configurar a API Key primeiro. Vai em <b>Config</b> para adicionar.</div>';
+    e.target.value='';return;
+  }
+  st.innerHTML='<div class="processing"><i class="ti ti-loader spin"></i><p>A analisar screenshot com IA...</p></div>';
   try{
     const b64=await toB64(file);
     const r=await fetch('https://api.anthropic.com/v1/messages',{
       method:'POST',
-      headers:{'Content-Type':'application/json'},
+      headers:{'Content-Type':'application/json','x-api-key':key,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-calls':'true'},
       body:JSON.stringify({
         model:'claude-sonnet-4-6',max_tokens:1000,
         messages:[{role:'user',content:[
           {type:'image',source:{type:'base64',media_type:file.type,data:b64}},
-          {type:'text',text:'Analise este screenshot do app Commonwealth Bank Australia. Extraia TODAS as transações de débito (gastos). Categorize cada uma em: groceries, transport, eating, utilities, fitness, shopping, ou uncategorised. Se houver créditos/receitas, some em totalIncome. Retorne SOMENTE JSON válido sem markdown: {"transactions":[{"desc":"nome","cat":"categoria","amount":valor_positivo}],"totalIncome":0}'}
+          {type:'text',text:'Analise este screenshot do app Commonwealth Bank Australia. Extraia TODAS as transações de débito (gastos). Categorize cada uma em: groceries, transport, eating, utilities, fitness, shopping, ou uncategorised. Se houver créditos/receitas, some em totalIncome. Retorna SOMENTE JSON válido sem markdown: {"transactions":[{"desc":"nome","cat":"categoria","amount":valor_positivo}],"totalIncome":0}'}
         ]}]
       })
     });
+    if(!r.ok){const err=await r.json();throw new Error(err.error?.message||'Erro '+r.status);}
     const data=await r.json();
-    if(data.error){throw new Error(data.error.message);}
     const text=data.content?.find(c=>c.type==='text')?.text||'{}';
     const parsed=JSON.parse(text.replace(/```json|```/g,'').trim());
     if(parsed.transactions?.length>0){
@@ -456,16 +501,14 @@ async function handleFile(e){
       renderPending();enableSave();
       st.innerHTML=`<div class="msg-ok"><i class="ti ti-check"></i>${parsed.transactions.length} transações extraídas automaticamente!</div>`;
     } else {
-      st.innerHTML='<div class="msg-warn"><i class="ti ti-alert-triangle"></i> Não encontrei transações na imagem. Adicione manualmente.</div>';
+      st.innerHTML='<div class="msg-warn"><i class="ti ti-alert-triangle"></i>Não encontrei transações na imagem. Adiciona manualmente.</div>';
     }
   }catch(err){
-    st.innerHTML='<div class="msg-err"><i class="ti ti-x"></i> Erro ao processar: '+err.message+'. Tente novamente ou adicione manualmente.</div>';
+    st.innerHTML=`<div class="msg-err"><i class="ti ti-x"></i>Erro: ${err.message}. Verifica a tua API Key em Config.</div>`;
   }
   e.target.value='';
 }
-
 function toB64(file){return new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(r.result.split(',')[1]);r.onerror=rej;r.readAsDataURL(file);});}
-
 const dz=document.getElementById('drop-zone');
 dz.addEventListener('dragover',e=>{e.preventDefault();dz.classList.add('drag');});
 dz.addEventListener('dragleave',()=>dz.classList.remove('drag'));
@@ -477,58 +520,42 @@ function renderGastos(){
   if(!S.weeks.length){
     nav.innerHTML='';
     document.getElementById('week-summary').innerHTML='';
-    document.getElementById('cat-groups').innerHTML='<div class="empty"><i class="ti ti-calendar-off"></i>Nenhuma semana registrada ainda.<br>Vá em "Adicionar semana" para começar.</div>';
+    document.getElementById('cat-groups').innerHTML='<div class="empty"><i class="ti ti-calendar-off"></i>Nenhuma semana registada ainda.<br>Vai em "Adicionar semana" para começar.</div>';
     return;
   }
   nav.innerHTML=S.weeks.map((w,i)=>`<button class="week-btn${i===S.activeWeek?' active':''}" onclick="setWeek(${i})">${w.name}</button>`).join('');
   renderWeekDetail();
 }
-
 function setWeek(i){S.activeWeek=i;renderGastos();}
-
 function renderWeekDetail(){
   const w=S.weeks[S.activeWeek];if(!w)return;
   const inc=(w.incomeDidi||0)+(w.incomeOther||0);
   const spend=(w.txs||[]).reduce((a,t)=>a+t.amount,0);
   const net=inc-spend;
-  document.getElementById('week-summary').innerHTML=`
-    <div class="kpi-row" style="margin-bottom:14px">
-      <div class="kpi"><div class="kpi-label">Receita Didi</div><div class="kpi-value green">${fmt(w.incomeDidi||0)}</div><div class="kpi-sub">${w.incomeDidi>=2500?'✓ meta atingida':'meta: $2,500'}</div></div>
-      <div class="kpi"><div class="kpi-label">Outras receitas</div><div class="kpi-value">${fmt(w.incomeOther||0)}</div></div>
-      <div class="kpi"><div class="kpi-label">Total gastos</div><div class="kpi-value red">${fmt(spend)}</div></div>
-      <div class="kpi"><div class="kpi-label">Saldo líquido</div><div class="kpi-value ${net>=0?'green':'red'}">${net<0?'-':''}${fmt(net)}</div></div>
-    </div>`;
-  const bycat={};
-  (w.txs||[]).forEach(t=>{if(!bycat[t.cat])bycat[t.cat]=[];bycat[t.cat].push(t);});
+  document.getElementById('week-summary').innerHTML=`<div class="kpi-row" style="margin-bottom:14px">
+    <div class="kpi"><div class="kpi-label">Receita Didi</div><div class="kpi-value green">${fmt(w.incomeDidi||0)}</div><div class="kpi-sub">${(w.incomeDidi||0)>=2500?'✓ meta atingida':'meta: $2,500'}</div></div>
+    <div class="kpi"><div class="kpi-label">Outras receitas</div><div class="kpi-value">${fmt(w.incomeOther||0)}</div></div>
+    <div class="kpi"><div class="kpi-label">Total gastos</div><div class="kpi-value red">${fmt(spend)}</div></div>
+    <div class="kpi"><div class="kpi-label">Saldo líquido</div><div class="kpi-value ${net>=0?'green':'red'}">${net<0?'-':''}${fmt(Math.abs(net))}</div></div>
+  </div>`;
+  const bycat={};(w.txs||[]).forEach(t=>{if(!bycat[t.cat])bycat[t.cat]=[];bycat[t.cat].push(t);});
   let html='';
   CAT_ORDER.forEach(cat=>{
     const txs=bycat[cat];if(!txs?.length)return;
     const tot=txs.reduce((a,t)=>a+t.amount,0);
     const c=CATS[cat];
-    html+=`<div class="cat-group">
-      <div class="cat-group-header" onclick="togCat(this)">
-        <div class="cat-group-left"><span class="cat-badge ${c.cls}">${c.label}</span><span style="font-size:12px;color:var(--text3)">${txs.length} lançamento${txs.length>1?'s':''}</span></div>
-        <div class="cat-group-right"><span style="font-weight:500;color:var(--text)">${fmt(tot)}</span><i class="ti ti-chevron-down"></i></div>
-      </div>
-      <div class="cat-items">
-        <table class="tx-table">
-          <colgroup><col style="width:70%"><col style="width:30%"></colgroup>
-          <thead><tr><th>Descrição</th><th>Valor</th></tr></thead>
-          <tbody>${txs.map(t=>`<tr><td title="${t.desc}">${t.desc}</td><td class="amount-neg">${fmt(t.amount)}</td></tr>`).join('')}</tbody>
-        </table>
-      </div>
-    </div>`;
+    html+=`<div class="cat-group"><div class="cat-group-header" onclick="togCat(this)">
+      <div class="cat-group-left"><span class="cat-badge ${c.cls}">${c.label}</span><span style="font-size:12px;color:var(--text3)">${txs.length} lançamento${txs.length>1?'s':''}</span></div>
+      <div class="cat-group-right"><span style="font-weight:500;color:var(--text)">${fmt(tot)}</span><i class="ti ti-chevron-down"></i></div>
+    </div><div class="cat-items"><table class="tx-table">
+      <colgroup><col style="width:70%"><col style="width:30%"></colgroup>
+      <thead><tr><th>Descrição</th><th>Valor</th></tr></thead>
+      <tbody>${txs.map(t=>`<tr><td title="${t.desc}">${t.desc}</td><td class="amount-neg">${fmt(t.amount)}</td></tr>`).join('')}</tbody>
+    </table></div></div>`;
   });
-  document.getElementById('cat-groups').innerHTML=html||'<div class="empty"><i class="ti ti-mood-smile"></i>Nenhum gasto registrado.</div>';
+  document.getElementById('cat-groups').innerHTML=html||'<div class="empty"><i class="ti ti-mood-smile"></i>Nenhum gasto registado.</div>';
 }
-
-function togCat(el){
-  const items=el.nextElementSibling;
-  const icon=el.querySelector('i');
-  const open=items.style.display!=='none';
-  items.style.display=open?'none':'';
-  icon.className='ti ti-chevron-'+(open?'right':'down');
-}
+function togCat(el){const items=el.nextElementSibling;const icon=el.querySelector('i');const open=items.style.display!=='none';items.style.display=open?'none':'';icon.className='ti ti-chevron-'+(open?'right':'down');}
 
 // ── META ──────────────────────────────────────────────────
 let cMeta=null;
@@ -543,59 +570,45 @@ function renderMeta(){
   document.getElementById('m-smart').textContent=fmt(S.smartAccess);
   document.getElementById('m-savings').textContent=fmt(S.savings);
   const ring=document.getElementById('goal-ring');
-  const circ=276.5;
-  ring.style.strokeDashoffset=(circ*(1-pct/100)).toFixed(1);
+  ring.style.strokeDashoffset=(276.5*(1-pct/100)).toFixed(1);
   document.getElementById('ring-pct').textContent=Math.round(pct)+'%';
   document.getElementById('goal-detail').innerHTML=`
     <p><strong>${fmt(total)}</strong> acumulado de <strong>${fmtK(GOAL)}</strong></p>
     <p>Faltam <strong style="color:var(--red)">${fmt(falta)}</strong></p>
-    <p>Prazo: <strong>14 ago 2026</strong> (<strong>${daysLeft} dias</strong> / <strong>${weeksLeft} semanas</strong>)</p>
-    <p>Precisas guardar <strong style="color:${perWeek<=2500?'var(--green)':'var(--red)'}">${fmt(perWeek)}/semana</strong></p>
-    <p>Meta Didi: <strong style="color:var(--green)">$2,500/semana</strong></p>
-  `;
-
-  const pts=[{label:'Início',val:total}];
-  S.weeks.forEach(w=>{
-    const net=(w.incomeDidi||0)+(w.incomeOther||0)-(w.txs||[]).reduce((a,t)=>a+t.amount,0);
-    pts.push({label:w.name,val:(pts[pts.length-1]?.val||total)+net});
-  });
+    <p>Prazo: <strong>14 ago 2026</strong> (${daysLeft} dias / ${weeksLeft} semanas)</p>
+    <p>Guardar <strong style="color:${perWeek<=2500?'var(--green)':'var(--red)'}">${fmt(perWeek)}/semana</strong></p>
+    <p>Meta Didi: <strong style="color:var(--green)">$2,500/semana</strong></p>`;
+  let running=total-S.weeks.reduce((a,w)=>{const net=(w.incomeDidi||0)+(w.incomeOther||0)-(w.txs||[]).reduce((s,t)=>s+t.amount,0);return a+net;},0);
+  const pts=[{label:'Início',val:running}];
+  S.weeks.forEach(w=>{running+=(w.incomeDidi||0)+(w.incomeOther||0)-(w.txs||[]).reduce((a,t)=>a+t.amount,0);pts.push({label:w.name,val:running});});
   pts.push({label:'Meta',val:GOAL});
-
   if(cMeta){cMeta.destroy();cMeta=null;}
   cMeta=new Chart(document.getElementById('c-meta'),{
     type:'line',
-    data:{
-      labels:pts.map(p=>p.label),
-      datasets:[
-        {label:'Patrimônio',data:pts.map(p=>p.val),borderColor:'#2a78d6',borderWidth:2,pointBackgroundColor:'#2a78d6',pointRadius:4,tension:.35,fill:false},
-        {label:'Meta',data:pts.map(()=>GOAL),borderColor:'#1baf7a',borderWidth:1.5,borderDash:[6,4],pointRadius:0,fill:false}
-      ]
-    },
-    options:{responsive:true,maintainAspectRatio:false,
-      plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.dataset.label+': '+fmt(c.parsed.y)}}},
-      scales:{
-        y:{ticks:{callback:v=>'$'+Math.round(v/1000)+'k'},grid:{color:'rgba(128,128,128,.12)'}},
-        x:{grid:{display:false},ticks:{autoSkip:false,maxRotation:30}}
-      },animation:{duration:400}
-    }
+    data:{labels:pts.map(p=>p.label),datasets:[
+      {label:'Patrimônio',data:pts.map(p=>p.val),borderColor:'#2a78d6',borderWidth:2,pointBackgroundColor:'#2a78d6',pointRadius:4,tension:.35,fill:false},
+      {label:'Meta',data:pts.map(()=>GOAL),borderColor:'#1baf7a',borderWidth:1.5,borderDash:[6,4],pointRadius:0,fill:false}
+    ]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.dataset.label+': '+fmt(c.parsed.y)}}},scales:{y:{ticks:{callback:v=>'$'+Math.round(v/1000)+'k'},grid:{color:'rgba(128,128,128,.12)'}},x:{grid:{display:false},ticks:{autoSkip:false,maxRotation:30}}},animation:{duration:400}}
   });
 }
-
 function updateBalances(){
   const s=parseFloat(document.getElementById('upd-smart').value);
   const sv=parseFloat(document.getElementById('upd-sav').value);
   if(!isNaN(s))S.smartAccess=s;
   if(!isNaN(sv))S.savings=sv;
-  save();
-  renderMeta();
-  renderDash();
-  document.getElementById('upd-smart').value='';
-  document.getElementById('upd-sav').value='';
-  document.getElementById('bal-status').innerHTML='<div class="msg-ok" style="margin-top:8px"><i class="ti ti-check"></i>Saldos atualizados!</div>';
+  save();renderMeta();renderDash();
+  document.getElementById('upd-smart').value='';document.getElementById('upd-sav').value='';
+  document.getElementById('bal-status').innerHTML='<div class="msg-ok" style="margin-top:8px"><i class="ti ti-check"></i>Saldos actualizados!</div>';
   setTimeout(()=>{document.getElementById('bal-status').innerHTML='';},2000);
 }
-
+function exportData(){
+  const blob=new Blob([JSON.stringify(S,null,2)],{type:'application/json'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='didi-tracker-backup.json';a.click();
+}
 renderDash();
+const existingKey=getApiKey();
+if(existingKey)document.getElementById('api-key-status')&&(document.getElementById('api-key-status').innerHTML='<div class="api-saved"><i class="ti ti-check"></i>Chave configurada</div>');
 </script>
 </body>
 </html>
